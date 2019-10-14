@@ -1,6 +1,7 @@
 # Servidor Sts Exemplo
 
 Requests:
+
     1. Geração do token:
 http://localhost:8080/token
     2. Validação de token:
