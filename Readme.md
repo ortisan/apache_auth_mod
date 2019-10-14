@@ -1,3 +1,7 @@
 # Módulo
 
-Contém o módulo e um servidor Sts como exemplo.
+Contém: 
+
+* Contém o módulo Apache.
+
+* Contém servidor Sts como exemplo.
