@@ -73,8 +73,24 @@ sudo vim /etc/apache2/sites-available/000-default.conf
         ProxyPreserveHost On
         ProxyPass / http://127.0.0.1:8080/
         ProxyPassReverse / http://127.0.0.1:8080/
-        AddHandler sts-handler /authorized_hello
+        SetHandler sts-handler
 </VirtualHost>
+```
+
+### Chamadas:
+
+Geração do token:
+
+```sh
+curl -X GET \
+  http://localhost:8080/token
+```
+
+Acesso url restrita:
+```sh
+curl -X GET \
+  http://localhost/authorized_hello \
+  -H 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVU0VSX0lEIjiMSIsInVzZXJuYW1lIjoidGVudGF0aXZhZmMifQ.NN9MXTfabh_tf9VeJbHoc7tGNd6fSf4jTfThSNkTBaY'
 ```
 
 ### Links úteis:
