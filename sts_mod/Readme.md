@@ -10,6 +10,7 @@ sudo apt-get install apache2
 ### Comandos úteis
 
 Compilação C:
+
 ```sh
 gcc curll.c -lcurl -o curll
 ```
@@ -27,6 +28,7 @@ sudo apxs -i -a -c -o mod_sts.so -c mod_sts.c -lcurl
 ```
 
 Arquivo onde se configura o handler:
+
 ```sh
 sudo vim /etc/apache2/apache2.conf
 AddHandler sts-handler /authorized_hello
@@ -39,7 +41,6 @@ ls /etc/apache2/mods-enabled/
 sudo rm /etc/apache2/mods-enabled/sts.load
 sudo rm /usr/lib/apache2/modules/mod_sts.so
 sudo rm /usr/lib/apache2/modules/mod_sts.la
-Locais onde o módulo é configurado:
 ```
 
 Restart do servidor:
@@ -69,6 +70,12 @@ sudo systemctl restart apache2.service
 
 ```sh
 sudo vim /etc/apache2/sites-available/000-default.conf
+```
+
+Adicionar as linhas abaixo:
+
+```sh
+StsUrlValidation "http://localhost:8080/token_info?token=%s"
 <VirtualHost *:80>
         ProxyPreserveHost On
         ProxyPass / http://127.0.0.1:8080/
